@@ -1,0 +1,50 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:Controls="clr-namespace:Coding4Fun.Kinect.Wpf.Controls;assembly=Coding4Fun.Kinect.Wpf"
+        xmlns:my="clr-namespace:Microsoft.Samples.Kinect.WpfViewers;assembly=Microsoft.Samples.Kinect.WpfViewers"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" x:Class="OSHIrT.MainWindow"
+        Title="MainWindow" Height="539" Width="747" Loaded="Window_Loaded" Closing="Window_Closing">
+
+    <Canvas Name="mainCanvas">
+        <my:KinectSensorChooser HorizontalAlignment="Left" Margin="198,159,0,0" Name="kinectSensorChooser1" VerticalAlignment="Top" Width="328" OpacityMask="Red" />
+        <my:KinectColorViewer HorizontalAlignment="Left" Name="colorWindow" Stretch="Fill" Width="640" Height="480" Kinect="{Binding ElementName=kinectSensorChooser1, Path=Kinect}" Margin="43,10,0,10" Canvas.Left="-3" Canvas.Top="-10" />
+        <Image Canvas.Left="584" Canvas.Top="380" Height="100" Name="cursorImage" Stretch="Fill" Width="96" Source="/OSHIrT;component/Images/cursor-draw.png" />
+        <Image Canvas.Left="40" Canvas.Top="380" Height="100" Name="cursorLeftImage" Stretch="Fill" Width="96" Source="/OSHIrT;component/Images/cursor-draw-left.png" />
+        <Canvas Name="storeCanvas" Visibility="Hidden">
+            <Image Canvas.Left="246" Canvas.Top="109" Height="200" Name="tshirtImage" Stretch="Fill" Width="200" />
+            <Label Name="tshirtPriceLabel" FontSize="28" FontFamily="Comic Sans MS" HorizontalContentAlignment="Center" Height="44" Width="272" Canvas.Left="296" Canvas.Top="59" Foreground="#FFFF2000" BorderBrush="#FF080808" />
+            <Controls:HoverButton ActiveImageSource="/OSHIrT;component/Images/right_arrow.png" ImageSource="/OSHIrT;component/Images/right_arrow.png" Width="79" Height="70" Canvas.Left="211" Canvas.Top="50" Name="right_arrow_button" />
+            <Controls:HoverButton ActiveImageSource="/OSHIrT;component/Images/left_arrow.png" ImageSource="/OSHIrT;component/Images/left_arrow.png" Width="79" Height="70" Canvas.Left="126" Canvas.Top="46" Name="left_arrow_button" />
+            <Controls:HoverButton ActiveImageSource="/OSHIrT;component/Images/checkout.png" ImageSource="/OSHIrT;component/Images/checkout.png" Width="100" Height="100" Canvas.Left="574" Canvas.Top="159" Name="checkout_button" />
+            <Controls:HoverButton ActiveImageSource="/OSHIrT;component/Images/cart.png" ImageSource="/OSHIrT;component/Images/cart.png" Width="100" Height="94" Canvas.Left="574" Canvas.Top="46" Name="cart_button" />
+            <Label Name="cartItemQty" Content="0" FontSize="28" FontFamily="Comic Sans MS" FontWeight="ExtraBold" HorizontalContentAlignment="Center" Height="44" Width="60" Canvas.Left="586" Canvas.Top="59" Foreground="#FFFF2000" BorderBrush="#FF080808" />
+        </Canvas>
+
+        <Canvas Name="loginCanvas" Visibility="Hidden">
+            <Label Content="You must login before you can make a purchase." FontSize="28" FontFamily="Comic Sans MS" HorizontalContentAlignment="Center" Height="44" Width="692" Canvas.Left="21" Canvas.Top="0" Foreground="#FFFF5E31" />
+            <Label Content="Please Hold You Member's QR Code Within the Box" FontSize="28" FontFamily="Comic Sans MS" HorizontalContentAlignment="Center" Height="44" Width="692" Canvas.Left="21" Canvas.Top="444" Foreground="#FFFF5E31" />
+            <Border Name="loginBox" BorderBrush="#FFFF5E31" BorderThickness="5" Width="634" Height="404" Canvas.Left="40" Canvas.Top="46" />
+        </Canvas>
+
+        <Canvas Name="confirmOrderCanvas" Visibility="Hidden">
+            <Label Content="You are about to make a purchase with your account credit card." FontSize="28" FontFamily="Comic Sans MS" HorizontalContentAlignment="Center" Height="44" Width="692" Canvas.Left="21" Canvas.Top="147" Foreground="#FF0D0D0D" />
+            <Controls:HoverButton ActiveImageSource="/OSHIrT;component/Images/buy.png" ImageSource="/OSHIrT;component/Images/buy.png" Name="confirm_order_button" Width="75" Height="75" Canvas.Left="198" Canvas.Top="307" />
+            <Controls:HoverButton ActiveImageSource="/OSHIrT;component/Images/cancel.png" ImageSource="/OSHIrT;component/Images/cancel.png" Name="cancel_order_button" Width="75" Height="75" Canvas.Left="451" Canvas.Top="307" />
+        </Canvas>
+        <Canvas Name="processingCanvas" Visibility="Hidden">
+            <Label Content="Processing Purchase......" FontSize="28" FontFamily="Comic Sans MS" HorizontalContentAlignment="Center" Height="44" Width="692" Canvas.Left="21" Canvas.Top="147" Foreground="#FF0D0D0D" />
+        </Canvas>
+
+        <Canvas Name="orderReceiptCanvas" Visibility="Hidden">
+            <Label Content="THANK YOU FOR SHOPPING WITH OH SHIrT!" FontFamily="Comic Sans MS" FontSize="24" HorizontalContentAlignment="Center" Canvas.Top="62" Height="41" Width="730" Canvas.Left="0" />
+            <Label Name="subTotalLabel" Content="subtotal" FontFamily="Comic Sans MS" FontSize="24" HorizontalContentAlignment="Center" Canvas.Top="100" Height="41" Width="730" Canvas.Left="0" />
+            <Label Name="taxLabel" Content="tax" FontFamily="Comic Sans MS" FontSize="24" HorizontalContentAlignment="Center" Canvas.Top="150" Height="41" Width="730" Canvas.Left="0" />
+            <Label Name="totalLabel" Content="total" FontFamily="Comic Sans MS" FontSize="24" HorizontalContentAlignment="Center" Canvas.Top="200" Height="41" Width="730" Canvas.Left="0" />
+            <Label Name="purchaseNumberLabel" Content="purchase" FontFamily="Comic Sans MS" FontSize="24" HorizontalContentAlignment="Center" Canvas.Top="250" Height="41" Width="730" Canvas.Left="0" />
+            <Controls:HoverButton ActiveImageSource="/OSHIrT;component/Images/return_to_shop.png" ImageSource="/OSHIrT;component/Images/return_to_shop.png" Name="close_receipt_button" Width="247" Height="61" Canvas.Left="252" Canvas.Top="398" />
+        </Canvas>
+       
+    </Canvas>
+
+</Window>
